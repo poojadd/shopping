@@ -1,0 +1,31 @@
+<% columns = [{:type => 'html', :class => "first"}, {:type => 'html'}, {:type => 'html'}, {:type => nil, :class => "last"}] %>
+<h1>Category</h1>
+
+<% if @categories.blank? %>
+    <p>There are not any Category currently in the system.</p>
+
+<% else %>
+
+
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+
+
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @categories.each do |category| %>
+          <tr>
+            <td><%= category.name %></td>
+
+
+            <td><%= link_to 'Show', admin_category_path(category) %></td>
+
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

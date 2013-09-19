@@ -1,0 +1,28 @@
+
+<h1>Brand</h1>
+
+<% if @brands.blank? %>
+    <p>There are not any Brand currently in the system.</p>
+
+<% else %>
+
+
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+
+
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @brands.each do |brand| %>
+          <tr>
+            <td><%= brand.name %></td>
+            <td><%= link_to 'Show', admin_brand_path(brand) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

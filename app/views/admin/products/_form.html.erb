@@ -1,0 +1,61 @@
+<%= form_for(@product) do |f| %>
+
+    <% if @product.errors.any? %>
+        <div id="error_explanation">
+
+          <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+          <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+
+        </div>
+    <% end %>
+
+    <div>
+      <table>
+        <tr>
+          <td><%= f.label :name %></td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :brand %></td>
+          <td><%= collection_select(:product, :brand_id, Brand.all, :id, :name) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :category %></td>
+          <td><%= collection_select(:product, :category_id, Category.all, :id, :name) %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :price %></td>
+          <td><%= f.text_field :price %> </td>
+        </tr>
+        <tr>
+          <td><%= f.label :size %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label :color %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><%= f.label :material_type %></td>
+          <td><%= f.text_field :material_type %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :description %></td>
+          <td><%= f.text_area :description %></td>
+        </tr>
+        <tr>
+          <td colspan="2" style=" text-align:center"><%= f.submit %></td>
+
+        </tr>
+
+      </table>
+
+
+    </div>
+
+
+<% end %>

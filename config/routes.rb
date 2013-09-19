@@ -45,7 +45,10 @@ Shopping::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
+  namespace :admin do
+    resources :brands, :categories, :products, only: [:new, :create, :edit, :update, :show, :index ]
+    root :to => 'welcome#index'
+  end
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'

@@ -1,33 +1,40 @@
-class admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < ApplicationController
 
-      def index
-        @categories = Category.all
+  def index
+    @categories = Admin::Category.all
+    @category = Admin::Category.new
+    p '-------------------------------------'
+    p @categories
+  end
+
+  def new
+    @category = Admin::Category.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+                  #  format.json { render json: @category }
+                    # format.js
       end
-      def new
-        @category = Category.new
+  end
 
-        respond_to do |format|
-          format.html # new.html.erb
-          format.json { render json: @category }
-          format.js
-        end
+  def create
+    @category = Admin::Category.new(params[:admin_category])
+
+    respond_to do |format|
+      if @category.save
+        @categories = Admin::Category.all
+
+        format.html { redirect_to admin_categories_path , notice: 'Category was successfully created.' }
+
+        format.js { render :file => '/admin/categories/index.js.erb' }
+      else
+        format.html { render action: "/admin/categories/new" }
+
       end
+    end
+  end
 
-      def create
-        @category = Mysubject.new(params[:mysubject])
-
-        respond_to do |format|
-          if @category.save
-            @categories = Mysubject.find(:all)
-
-            format.html { redirect_to category_path, notice: 'Category was successfully created.' }
-            format.json { render json: category_path, status: :created, location: @mysubject }
-            format.js { render :file => '/admin/category/index.js.erb' }
-          else
-            format.html { render action: "new" }
-            format.json { render json: @mysubject.errors, status: :unprocessable_entity }
-          end
-        end
-      end
-
+  def show
+    @category = Admin::Category.find(params[:id])
+  end
 end
