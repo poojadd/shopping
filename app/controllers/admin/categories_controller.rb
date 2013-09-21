@@ -1,10 +1,10 @@
 class Admin::CategoriesController < ApplicationController
+  before_filter :authenticate_user,  :except => [:index, :show]
 
   def index
     @categories = Admin::Category.all
     @category = Admin::Category.new
-    p '-------------------------------------'
-    p @categories
+
   end
 
   def new

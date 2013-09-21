@@ -1,0 +1,17 @@
+<%= form_for(@roleuser) do |f| %>
+
+    <div>
+      <%= f.label :Role %>
+      <%= collection_select(:roleuser, :roles_id, Role.all, :id, :name) %>
+
+    </div>
+    <div>
+      <%= f.label :User %>
+      <%= collection_select(:roleuser, :users_id, User.all, :id, :email) %>
+
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

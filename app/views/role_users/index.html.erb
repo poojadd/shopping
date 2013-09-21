@@ -1,0 +1,26 @@
+
+<h1>User Roles</h1>
+
+<% if @roleusers.blank? %>
+    <p>There are not any Users currently in the system.</p>
+
+<% else %>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+
+
+      </tr>
+      </thead>
+      <tbody>
+      <% @roleusers.each do |roleuser| %>
+          <tr>
+            <td><%= roleuser.users %></td>
+
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>

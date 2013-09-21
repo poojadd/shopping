@@ -21,7 +21,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+gem 'devise'
+gem 'cancan'
 gem 'jquery-rails'
 gem 'annotate', '2.5.0'
 # To use ActiveModel has_secure_password
