@@ -1,10 +1,22 @@
 <h1> Welcome to Online Shopping</h1>
+<ul>
+  <li>
+    <%= link_to image_tag("21.jpg", :border => 0,),
+                admin_categories_path %>  <span><br><b>Category</b></span>
+  </li>
+  <li>
+
+    <%= link_to image_tag("5.jpg", :border => 0,),
+                admin_brands_path %> <span><br><b>Brand</b></span>
+  </li>
+
+  <li>
+
+    <%= link_to image_tag("27.jpg", :border => 0,),
+                users_path %> <span><br><b>Users</b></span>
+  </li>
+</ul>
 
 
 
-<%= link_to image_tag("21.jpg", :border=>0,),
-            admin_categories_path%>  <span><br><b>Category</b></span>   &nbsp;
 
-<%= link_to image_tag("5.jpg", :border=>0,),
-            admin_brands_path%> <span><br><b>Brand</b></span>
-<%= link_to image_tag("27.jpg", :border =>  0),  new_role_user_path  %>  <span><br><b>Assign Role</b></span>

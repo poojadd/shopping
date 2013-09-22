@@ -1,6 +1,6 @@
 class Admin::CategoriesController < ApplicationController
-  before_filter :authenticate_user,  :except => [:index, :show]
-
+  before_filter :authenticate_user!
+  load_and_authorize_resource
   def index
     @categories = Admin::Category.all
     @category = Admin::Category.new

@@ -1,0 +1,12 @@
+<% @users.each do |user| %>
+
+    <div><%= user.email %>
+      <%= link_to 'Assign roles', add_roles_user_path(user), :remote => true  %>
+      <%= link_to 'Show', user_path(user) %>
+      <%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %>
+    </div>
+
+    <div id="user-<%= user.id %>-roles-container" style=" display: none ;">
+
+    </div>
+<% end %>

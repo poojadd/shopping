@@ -1,0 +1,14 @@
+<p> Assign Roles</p>
+
+<%  %>
+
+<%= form_tag("/users/#{@user.id}/assign_roles", :remote => true ) do |f| %>
+<% for role in @roles %>
+    <div>
+      <%= check_box_tag 'role_id[]', role.id, @user.roles.include?(role) %>  <%= role.name %>
+    </div>
+<% end %>
+    <div class="actions">
+      <%= submit_tag  'Save' %>
+    </div>
+<% end %>
