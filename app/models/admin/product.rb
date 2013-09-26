@@ -19,12 +19,16 @@
 
 class Admin::Product < ActiveRecord::Base
   belongs_to :brand
-
-  attr_accessible :category_id, :name, :description, :price, :material_type, :brand_id, :size, :color, :for_whom
+  belongs_to :category
+  acts_as_taggable
+   SIZE = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
+  COLOR = ['Black', 'White', 'Red', 'Brown' ]
+  GENDER = ['Men', 'Women']
+  attr_accessible :category_id, :name, :description, :price, :material_type, :brand_id, :size, :color, :tag_list, :image
   validates :name, :presence => true
   validates :price, :presence => true
   validates_numericality_of :price
-
+  mount_uploader :image, ImageUploader
 
 
 end

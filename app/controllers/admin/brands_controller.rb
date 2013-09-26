@@ -1,18 +1,17 @@
 class Admin::BrandsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @brands = Admin::Brand.all
-    p '-------------------------------------'
-    p @brands
+    @brand = Admin::Brand.new
   end
 
   def new
     @brand = Admin::Brand.new
 
     respond_to do |format|
-      format.html # new.html.erb
-                  #  format.json { render json: @brand }
-                  # format.js
+      format.html
     end
   end
 
@@ -21,13 +20,11 @@ class Admin::BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
-        #  @brands = Admin::Brand.all
-
+        @brands = Admin::Brand.all
         format.html { redirect_to admin_brands_path, notice: 'Brand was successfully created.' }
-
-        format.js { render :file => '/admin/category/index.js.erb' }
+        format.js { render :file => '/admin/brands/index.js.erb' }
       else
-        format.html { render action: "/admin/categories/new" }
+        format.html { render action: "/admin/brands/new" }
 
       end
     end

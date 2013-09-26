@@ -1,4 +1,6 @@
-<%= form_for(@product, :html => {:multipart => true}) do |f| %>
+<h1> Edit Product</h1>
+
+<%= form_for(@product) do |f| %>
 
     <% if @product.errors.any? %>
         <div id="error_explanation">
@@ -12,7 +14,10 @@
 
         </div>
     <% end %>
+    <div style="float: right">
+      <%= image_tag @product.image_url.to_s %>
 
+    </div>
     <div>
 
       <table>
@@ -23,11 +28,11 @@
         </tr>
         <tr>
           <td><%= f.label :brand %></td>
-          <td><%= select_tag "brand", options_from_collection_for_select(@brands, "id", "name") %></td>
+          <td><%= select_tag "brand", options_from_collection_for_select(@brands, "id", "name", :selected => @product.brand_id) %></td>
         </tr>
         <tr>
           <td><%= f.label :category %></td>
-          <td><%= collection_select(:category, :category_id, Admin::Category.all, :id, :name, :prompt => true) %></td>
+          <td><%= select_tag "category", options_from_collection_for_select(@categories, "id", "name", :selected => @product.category_id) %></td>
         </tr>
         <tr>
           <td><%= f.label :price %></td>
@@ -40,26 +45,37 @@
         <tr>
           <td><%= f.label :gender %></td>
           <td>
-            <% for gender in Admin::Product::GENDER %>
-                <%= radio_button_tag "gender", gender %> <%= gender %>
+            <% for g in Admin::Product::GENDER %>
+                <% if g == @product.gender %>
+                    <%= radio_button_tag "gender", g, :checked => true %> <%= g %>
+                <% else %>
+                    <%= radio_button_tag "gender", g %> <%= g %>
+                <% end %>
             <% end %>
           </td>
         </tr>
         <tr>
           <td><%= f.label :size %></td>
           <td>
-            <% for size in Admin::Product::SIZE %>
-                <%= radio_button_tag "size", size %> <%= size %>
+            <% for s in Admin::Product::SIZE %>
+                <% if s == @product.size %>
+                    <%= radio_button_tag "size", s, :checked => true %> <%= s %>
+                <% else %>
+                    <%= radio_button_tag "size", s %> <%= s %>
 
+                <% end %>
             <% end %>
           </td>
         </tr>
         <tr>
           <td><%= f.label :color %></td>
           <td>
-            <% for color in Admin::Product::COLOR %>
-                <%= radio_button_tag "color", color %> <%= color %>
-
+            <% for c in Admin::Product::COLOR %>
+                <% if c == @product.color %>
+                    <%= radio_button_tag "color", c, :checked => true %> <%= c %>
+                <% else %>
+                    <%= radio_button_tag "color", c %> <%= c %>
+                <% end %>
             <% end %>
           </td>
         </tr>
@@ -82,6 +98,8 @@
 
       </table>
 
+      <br> <br>
+      <%= link_to 'Back', admin_products_path %>    |
     </div>
 
 <% end %>

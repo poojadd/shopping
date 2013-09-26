@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  roles_mask             :integer
 #
 
 class User < ActiveRecord::Base
@@ -30,6 +31,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   def role?(role)
+
     self.roles.collect(&:name).include?(role)
   end
 
