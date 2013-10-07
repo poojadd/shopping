@@ -1,5 +1,6 @@
 class Admin::CategoriesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :index_category
   load_and_authorize_resource
 
   def index
@@ -31,5 +32,13 @@ class Admin::CategoriesController < ApplicationController
 
   def show
     @category = Admin::Category.find(params[:id])
+  end
+
+  def destroy
+    Admin::Category.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to admin_categories_path }
+      format.js { render :file => '/admin/categories/index.js.erb' }
+    end
   end
 end

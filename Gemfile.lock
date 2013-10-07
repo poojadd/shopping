@@ -95,6 +95,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.5)
+    rmagick (2.13.2)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -111,6 +112,8 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.4.1)
+    tinymce-rails (4.0.7)
+      railties (>= 3.1.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -134,7 +137,9 @@ DEPENDENCIES
   execjs
   jquery-rails
   rails (= 3.2.14.rc2)
+  rmagick
   sass-rails (~> 3.2.3)
   sqlite3
   therubyracer
+  tinymce-rails
   uglifier (>= 1.0.3)

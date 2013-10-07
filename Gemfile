@@ -26,7 +26,9 @@ gem 'cancan'
 gem 'jquery-rails'
 gem 'annotate', '2.5.0'
 gem 'acts-as-taggable-on'
-gem 'carrierwave'
+gem 'rmagick'
+gem "carrierwave"
+gem 'tinymce-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

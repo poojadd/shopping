@@ -62,6 +62,12 @@ Shopping::Application.routes.draw do
     get :add_roles, :on => :member
     post :assign_roles, :on => :member
   end
+  resources :categories do
+    resources :products
+  end
+   resources :carts
+  match '/add_cart', to: 'carts#create'
+  #post "add_cart" => "carts#create", :as => "addcart"
  root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"

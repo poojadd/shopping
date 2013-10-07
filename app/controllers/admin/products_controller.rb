@@ -1,5 +1,6 @@
 class Admin::ProductsController < ApplicationController
   load_and_authorize_resource
+  before_filter :index_category
 
   def new
     @product = Admin::Product.new

@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shopping</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>Online Shopping</title>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>  <%= link_to 'Home', admin_root_path  %>
-  <div id="user_nav">
-  <% if current_user %>
+  <%= csrf_meta_tags %>
+  <script>
+      $(function() {
+          $( "#menu" ).menu();
+      });
+  </script>
+  <style>
+      .ui-menu { width: 150px; }
+  </style>
 
-      Logged in as <%= current_user.email %>. | <%= link_to "Edit Profile", edit_user_registration_path %> |
-      <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-
-  <% else %>
-      <%= link_to "Sign up", new_user_registration_path %> |
-      <%= link_to "log in", new_user_session_path %>
-  <% end %>
-      </div>
 </head>
 <body>
 
-<%= yield %>
-
-</body>
-</html>
+<div style="display:inline-block; margin-left: 75px;margin-right: 50px;width: 90%;">
+  <div style=" border-top: 1px solid #D6D6D6; border-bottom: 1px solid #D6D6D6; height: 84px; font-size: 12px; margin: 0; padding: 4px 0 6px;">
+    <div style="float: left; width: 300px;"><h1>
+      <%= link_to image_tag('shopping.jpg '), root_path %>
+      <%= %> </h1></div>
+    <div style=" float: right; padding-top: 65px;">
+      <% if current_user %>
+          Logged in as <%= current_user.email %>. | <%= link_to "Edit Profile", edit_user_registration_path %>
+          |
+          <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+      <% else %>
+          <%= link_to "Sign up", new_user_registration_path %> |
+          <%= link_to "log in", new_user_session_path %>
+      <% end %>
+    </div>
+  </div>
+  <div style=" display: inline-block; width: 98%; border: 1px solid #D6D6D6;">
+    <div style="display: inline-block">
+      <ul id="menu">
+        <% @index_cat.each do |cat| %>
+            <li><%= link_to cat.name, category_products_path(cat) %>
+              </li>
+        <% end %>
+      </ul>
+    </div>
+    <div style="width: 80%;float:right;padding-left: 12px;padding-bottom: 12px"><%= yield %></div>
+  </div>
+  <div style="border-top:1px solid #D6D6D6;margin-top:15px;">
+    <p style="padding-top:8px;font-size:12px;text-align:center;">
+      © onlineshopping.com / All rights reserved / Our Privacy Policy / Our Terms of Use </p></div>
+</div>

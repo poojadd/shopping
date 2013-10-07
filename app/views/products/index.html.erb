@@ -1,0 +1,14 @@
+
+<% @products.each do |product| %>
+<div>
+
+  <%= product.name %>
+ <br>
+
+  <div style="width: 200px;height: 200px;" >
+
+  <%= link_to image_tag(product.image), category_product_path(params[:category_id], product.id) %>
+  </div>
+
+</div>
+<% end %>

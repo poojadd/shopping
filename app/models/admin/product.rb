@@ -9,10 +9,12 @@
 #  material_type :string(255)
 #  size          :string(255)
 #  color         :string(255)
-#  band_id       :integer
+#  brand_id      :integer
 #  category_id   :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  gender        :string(255)
+#  image         :string(255)
 #
 
 
@@ -20,6 +22,8 @@
 class Admin::Product < ActiveRecord::Base
   belongs_to :brand
   belongs_to :category
+  has_many :carts
+
   acts_as_taggable
    SIZE = ['XS', 'S', 'M', 'L', 'XL', 'XXL']
   COLOR = ['Black', 'White', 'Red', 'Brown' ]

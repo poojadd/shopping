@@ -1,0 +1,14 @@
+<h2>Welcome</h2>
+<table>
+
+
+  <% @carts.each do |cart| %>
+      <tr>
+        <td>
+          <%= cart.users_id %></td>
+        <td><%= cart.products_id %></td>
+        <td><%= link_to 'Destroy', cart, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+  <% end %>
+
+</table>
